@@ -1,0 +1,38 @@
+"use strict";
+document.getElementById("toevoegen").onclick = function () {
+    naam(); reset();
+};
+
+let aantal = ;
+function naam() {
+
+    const voornamen = [document.getElementById("voornamen")];
+    voornamen.forEach(naam => console.log(naam));
+    const voornaamInput = document.getElementById("voornaam");
+    const voornaam = voornaamInput.value;
+
+    var num = 1/*alle arrey namen   for?.match(/\d+/)[0]*/
+    if (num <= 1) {/*naam bestaat nog niet*/
+
+        aantal++
+        console.log(aantal)/*test*/
+
+        const li = document.createElement("li");
+        li.innerText = voornaam + ":1";
+        document.getElementById("voornamen").appendChild(li);
+    } else {/*naam bestaat al
+    plaats naam opnieuw +1 */
+        const li = document.createElement("li data-aantal1");
+        li.innerText = voornaam + ":" + aantal;
+        document.getElementById("voornamen").appendChild(li);
+
+        aantal++
+        console.log(aantal)/*test*/
+    }
+}
+function reset() {
+    const voornaamInput = document.getElementById("voornaam");
+    voornaamInput.value = "";
+    voornaamInput.focus();
+}
+
