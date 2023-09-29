@@ -10,9 +10,7 @@ async function leesGroenten() {
         for (const groente of groenten) {
             var opt = document.createElement("option")
             opt.value = groente.naam;
-            opt.setAttribute("id", groente.naam)
-            opt.setAttribute("data-naam", groente.naam)
-            opt.setAttribute("data-prijs", groente.prijs)
+            opt.dataset.prijs = groente.prijs;
             opt.innerText = groente.naam + " €" + groente.prijs + "/" + groente.eenheid;
             document.getElementById("groente").appendChild(opt)
         }
@@ -74,8 +72,10 @@ function verwerkIngave() {
     aantalTd.setAttribute("data-prijs", document.getElementById("aantal").value)
 
     const prijsEnkelTd = tr.insertCell();
-    prijsEnkelTd.innerText = document.getElementById("groente").value;
-
+    const  groent = document.getElementById("groente")
+    const gekozenOption = groent.options[groent.selectedIndex]; 
+    const prijs = gekozenOption.dataset.prijs; 
+    prijsEnkelTd.innerText = prijs
 
     const teBetalenTd = tr.insertCell();
     teBetalenTd.innerText = Number(aantalTd.innerText * prijsEnkelTd.innerText);
